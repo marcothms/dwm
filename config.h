@@ -93,8 +93,8 @@ static Key keys[] = {
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} }, // show bar
 
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = +1 } }, // ???
-	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } }, // ???
+	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } }, // more master nodes
+	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } }, // less measter nodes
 
 //	{ MODKEY,                       XK_Return, zoom,           {0} }, // ???
 
