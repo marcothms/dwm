@@ -32,6 +32,7 @@ static const Rule rules[] = {
 	{ "Nightly",  NULL,       NULL,       1 << 2,       0,        0,          0,         -1 },
 	{ "Alacritty",NULL,       NULL,       0,            0,        1,          0,         -1 },
 	{ "discord",  NULL,       NULL,       1 << 3,       0,        0,          0,         -1 },
+	{ "spotify",  NULL,       NULL,       1 << 4,       0,        0,          0,         -1 },
 };
 
 /* layout(s) */
@@ -59,11 +60,13 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run",       NULL };
-static const char *termcmd[]  = { "alacritty",       NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browser[]  = { "firefox-nightly", NULL };
-static const char *discord[]  = { "discord",         NULL };
-static const char *pavu[]     = { "pavucontrol",     NULL };
+static const char *discord[]  = { "discord", NULL };
+static const char *pavu[]     = { "pavucontrol", NULL };
+static const char *flameshot[]= { "flameshot", "gui", NULL };
+static const char *spotify[]  = { "spotify", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -75,11 +78,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_f,      spawn,          {.v = browser } },
 	{ MODKEY|ControlMask,           XK_d,      spawn,          {.v = discord } },
 	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = pavu } },
+	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = spotify } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = flameshot } },
 
-//	{ MODKEY,                       XK_space,  setlayout,      {0} }, // swap layout
-//	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, // floating
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} }, // monocle
 
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // decrease master size
