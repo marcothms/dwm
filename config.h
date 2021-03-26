@@ -83,7 +83,7 @@ static Key keys[] = {
 
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} }, // monocle
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // monocle
 
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // decrease master size
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, // increase master size
