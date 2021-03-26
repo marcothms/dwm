@@ -34,7 +34,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -58,9 +58,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *dmenucmd[] = { "dmenu_run",       NULL };
+static const char *termcmd[]  = { "alacritty",       NULL };
+static const char *browser[]  = { "firefox-nightly", NULL };
+static const char *discord[]  = { "discord",         NULL };
+static const char *pavu[]     = { "pavucontrol",     NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -68,6 +70,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },  // open terminal
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
 	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} }, // quit dwm TODO: NOT WORKING
+
+	{ MODKEY|ControlMask,            XK_f,      spawn,          {.v = browser } },
+	{ MODKEY|ControlMask,            XK_d,      spawn,          {.v = discord } },
+	{ MODKEY|ControlMask,            XK_p,      spawn,          {.v = pavu } },
 
 	{ MODKEY,                       XK_space,  setlayout,      {0} }, // swap layout
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
