@@ -28,9 +28,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	/* class     instance     title       tags mask   isfloating  isterminal  noswallow  monitor */
 	{ "Nightly",  NULL,       NULL,       1 << 2,       0,        0,          0,         -1 },
 	{ "Alacritty",NULL,       NULL,       0,            0,        1,          0,         -1 },
+	{ "discord",  NULL,       NULL,       1 << 3,       0,        0,          0,         -1 },
 };
 
 /* layout(s) */
@@ -69,18 +70,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, // open dmenu
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },  // open terminal
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
-	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} }, // quit dwm TODO: NOT WORKING
+	{ MODKEY|ShiftMask,             XK_l,      quit,           {0} }, // quit dwm TODO: NOT WORKING
 
 	{ MODKEY|ControlMask,            XK_f,      spawn,          {.v = browser } },
 	{ MODKEY|ControlMask,            XK_d,      spawn,          {.v = discord } },
 	{ MODKEY|ControlMask,            XK_p,      spawn,          {.v = pavu } },
 
-	{ MODKEY,                       XK_space,  setlayout,      {0} }, // swap layout
+//	{ MODKEY,                       XK_space,  setlayout,      {0} }, // swap layout
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
-//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_f,      togglefullscr,  {0} }, // toggle fullscreen
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
+//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, // floatinh
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} }, // monocle
 
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // decrease master size
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, // increase master size
