@@ -67,19 +67,19 @@ static const char *pavu[]     = { "pavucontrol",     NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, // open dmenu
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },  // open terminal
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
 	{ MODKEY|ShiftMask,             XK_l,      quit,           {0} }, // quit dwm TODO: NOT WORKING
 
-	{ MODKEY|ControlMask,            XK_f,      spawn,          {.v = browser } },
-	{ MODKEY|ControlMask,            XK_d,      spawn,          {.v = discord } },
-	{ MODKEY|ControlMask,            XK_p,      spawn,          {.v = pavu } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, // open dmenu
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },  // open terminal
+	{ MODKEY|ControlMask,           XK_f,      spawn,          {.v = browser } },
+	{ MODKEY|ControlMask,           XK_d,      spawn,          {.v = discord } },
+	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = pavu } },
 
 //	{ MODKEY,                       XK_space,  setlayout,      {0} }, // swap layout
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
+//	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, // floatinh
+//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, // floating
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} }, // monocle
 
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // decrease master size
@@ -93,7 +93,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = +1 } }, // ???
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } }, // ???
 
-//	{ MODKEY,                       XK_Return, zoom,           {0} },
+//	{ MODKEY,                       XK_Return, zoom,           {0} }, // ???
 
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // focus monitor left
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } }, // focus monitor right
