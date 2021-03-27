@@ -1,5 +1,6 @@
-/* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
+
+/* See LICENSE file for copyright and license details. */
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -11,10 +12,11 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const char *fonts[]          = { "Product Sans:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 
 static const char fg[]              = "#ffffff";
 static const char bg[]              = "#1C1B1D";
