@@ -87,16 +87,18 @@ static const char *play_prev[]= { "playerctl", "previous", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
-//	{ MODKEY|ShiftMask,             XK_l,      quit,           {0} }, // quit dwm
+	{ MODKEY|ShiftMask,             XK_BackSpace,    quit,     {0} }, // quit dwm
 
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, // open dmenu
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },  // open terminal
+	// open programs
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_f,      spawn,          {.v = browser } },
 	{ MODKEY|ControlMask,           XK_d,      spawn,          {.v = discord } },
 	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = pavu } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = spotify } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = flameshot } },
 
+	// laptop audio control
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = vol_up } },
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = vol_down } },
 	{ 0,                            XF86XK_AudioMute       , spawn, {.v = vol_mute } },
@@ -104,7 +106,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext       , spawn, {.v = play_next } },
 	{ 0,                            XF86XK_AudioPrev       , spawn, {.v = play_prev } },
 
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
+	// window layout and control
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                // toggle float per window
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // monocle
 
