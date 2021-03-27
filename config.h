@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
-static const char *fonts[]          = { "Product Sans:size=10" };
+static const char *fonts[]          = { "Product Sans:size=10", "Stick:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -29,7 +29,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -122,7 +122,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } }, // more master nodes
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } }, // less measter nodes
 
-//	{ MODKEY,                       XK_Return, zoom,           {0} }, // ???
+	{ MODKEY,                       XK_z,      zoom,           {0} }, // zoom on selected window
 
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // focus monitor left
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } }, // focus monitor right
