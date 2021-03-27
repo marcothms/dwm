@@ -1,23 +1,29 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const char *fonts[]          = { "FiraCode Nerd Font Mono:size=10" };
+
+static const char *fonts[]          = { "Product Sans:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
+
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_green[]       = "#98c379";
+
+static const char fg[]              = "#ffffff";
+static const char bg[]              = "#1C1B1D";
+static const char green[]           = "#98c379";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray1, col_green, col_green },
+	[SchemeNorm] = { fg,        bg,        bg    },
+	[SchemeSel]  = { bg,        green,     green },
 };
 
 /* tagging */
@@ -28,11 +34,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance     title       tags mask   isfloating  isterminal  noswallow  monitor */
-	{ "Nightly",  NULL,       NULL,       1 << 2,       0,        0,          0,         -1 },
-	{ "Alacritty",NULL,       NULL,       0,            0,        1,          0,         -1 },
-	{ "discord",  NULL,       NULL,       1 << 3,       0,        0,          0,         -1 },
-	{ "spotify",  NULL,       NULL,       1 << 4,       0,        0,          0,         -1 },
+	/* class     instance     title           tags mask   isfloating  isterminal  noswallow  monitor */
+	{ "Nightly",  NULL,       NULL,           1 << 2,       0,        0,          0,         -1 },
+	{ "Alacritty",NULL,       NULL,           0,            0,        1,          0,         -1 },
+	{ "discord",  NULL,       NULL,           1 << 3,       0,        0,          0,         -1 },
+	{ NULL,       NULL,       "Event Tester", 0,            0,        0,          1,         -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -68,10 +74,18 @@ static const char *pavu[]     = { "pavucontrol", NULL };
 static const char *flameshot[]= { "flameshot", "gui", NULL };
 static const char *spotify[]  = { "spotify", NULL };
 
+static const char *vol_up[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
+static const char *vol_down[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
+static const char *vol_mute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+
+static const char *play_tggl[]= { "playerctl", "play-pause", NULL };
+static const char *play_next[]= { "playerctl", "next", NULL };
+static const char *play_prev[]= { "playerctl", "previous", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
-	{ MODKEY|ShiftMask,             XK_l,      quit,           {0} }, // quit dwm TODO: NOT WORKING
+//	{ MODKEY|ShiftMask,             XK_l,      quit,           {0} }, // quit dwm
 
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } }, // open dmenu
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },  // open terminal
@@ -80,6 +94,13 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = pavu } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = spotify } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = flameshot } },
+
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = vol_up } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = vol_down } },
+	{ 0,                            XF86XK_AudioMute       , spawn, {.v = vol_mute } },
+	{ 0,                            XF86XK_AudioPlay       , spawn, {.v = play_tggl } },
+	{ 0,                            XF86XK_AudioNext       , spawn, {.v = play_next } },
+	{ 0,                            XF86XK_AudioPrev       , spawn, {.v = play_prev } },
 
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, // toggle float per window
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
