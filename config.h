@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
-static const char *fonts[]          = { "Product Sans:size=10", "Stick:size=10", "Material Design Icons:size=10" };
+static const char *fonts[]          = { "Product Sans:size=10", "Stick:size=11", "Material Design Icons:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -19,13 +19,16 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 
 static const char fg[]              = "#ffffff";
-static const char bg[]              = "#1C1B1D";
-static const char green[]           = "#98c379";
+static const char nord_fg[]         = "#D8DEE9";
+static const char one_bg[]          = "#1C1B1D";
+static const char nord_bg[]         = "#2E3440";
+static const char one_green[]       = "#98c379";
+static const char nord_blue[]       = "#81A1C1";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { fg,        bg,        bg    },
-	[SchemeSel]  = { bg,        green,     green },
+	[SchemeNorm] = { nord_fg,   nord_bg,   nord_bg   },
+	[SchemeSel]  = { nord_bg,   nord_blue, nord_blue },
 };
 
 /* tagging */
