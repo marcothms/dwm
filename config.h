@@ -90,7 +90,6 @@ static const char *play_prev[]= { "playerctl", "previous", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
-	{ MODKEY|ShiftMask,             XK_BackSpace,    quit,     {0} }, // quit dwm
 
 	// open programs
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
