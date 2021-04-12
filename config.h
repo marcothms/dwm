@@ -72,6 +72,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *lock[]     = { "slock", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browser[]  = { "firefox-nightly", NULL };
 static const char *discord[]  = { "discord", NULL };
@@ -91,6 +92,7 @@ static const char *play_prev[]= { "playerctl", "previous", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
+	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,       {.v = lock} }, // lock
 
 	// open programs
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
