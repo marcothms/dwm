@@ -71,98 +71,90 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *lock[]     = { "slock", NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
-static const char *browser[]  = { "firefox-nightly", NULL };
-static const char *discord[]  = { "discord", NULL };
-static const char *pavu[]     = { "pavucontrol", NULL };
-static const char *flameshot[]= { "flameshot", "gui", NULL };
-static const char *spotify[]  = { "spotify", NULL };
-static const char *files[]    = { "thunar", NULL };
+static const char *dmenucmd[]  = { "dmenu_run", NULL };
+static const char *lock[]      = { "slock", NULL };
+static const char *termcmd[]   = { "alacritty", NULL };
+static const char *browser[]   = { "firefox-nightly", NULL };
+static const char *discord[]   = { "discord", NULL };
+static const char *pavu[]      = { "pavucontrol", NULL };
+static const char *flameshot[] = { "flameshot", "gui", NULL };
+static const char *spotify[]   = { "spotify", NULL };
+static const char *files[]     = { "thunar", NULL };
 
-static const char *vol_up[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
-static const char *vol_down[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
-static const char *vol_mute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *vol_up[]    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
+static const char *vol_down[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
+static const char *vol_mute[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
-static const char *play_tggl[]= { "playerctl", "play-pause", NULL };
-static const char *play_next[]= { "playerctl", "next", NULL };
-static const char *play_prev[]= { "playerctl", "previous", NULL };
+static const char *play_tggl[] = { "playerctl", "play-pause", NULL };
+static const char *play_next[] = { "playerctl", "next", NULL };
+static const char *play_prev[] = { "playerctl", "previous", NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // kill window
-	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,       {.v = lock} }, // lock
+	/* modifier                     key                       function        argument */
+	{ MODKEY|ShiftMask,             XK_q,                     killclient,     {0} },         // kill window
+	{ MODKEY|ShiftMask,             XK_BackSpace,             spawn,          {.v = lock} }, // lock
 
 	// open programs
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_e,      spawn,          {.v = files } },
-	{ MODKEY|ControlMask,           XK_f,      spawn,          {.v = browser } },
-	{ MODKEY|ControlMask,           XK_d,      spawn,          {.v = discord } },
-	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = pavu } },
-	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = spotify } },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = flameshot } },
+	{ MODKEY,                       XK_d,                     spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return,                spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_e,                     spawn,          {.v = files } },
+	{ MODKEY|ControlMask,           XK_f,                     spawn,          {.v = browser } },
+	{ MODKEY|ControlMask,           XK_d,                     spawn,          {.v = discord } },
+	{ MODKEY|ControlMask,           XK_p,                     spawn,          {.v = pavu } },
+	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = spotify } },
+	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = flameshot } },
 
 	// laptop audio control
-	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = vol_up } },
-	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = vol_down } },
-	{ 0,                            XF86XK_AudioMute       , spawn, {.v = vol_mute } },
-	{ 0,                            XF86XK_AudioPlay       , spawn, {.v = play_tggl } },
-	{ 0,                            XF86XK_AudioNext       , spawn, {.v = play_next } },
-	{ 0,                            XF86XK_AudioPrev       , spawn, {.v = play_prev } },
+	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = vol_up } },
+	{ 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = vol_down } },
+	{ 0,                            XF86XK_AudioMute,         spawn,          {.v = vol_mute } },
+	{ 0,                            XF86XK_AudioPlay,         spawn,          {.v = play_tggl } },
+	{ 0,                            XF86XK_AudioNext,         spawn,          {.v = play_next } },
+	{ 0,                            XF86XK_AudioPrev,         spawn,          {.v = play_prev } },
 
 	// window layout and control
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                // toggle float per window
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // tiling
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // monocle
+	{ MODKEY|ShiftMask,             XK_space,                 togglefloating, {0} },                // toggle float
+	{ MODKEY,                       XK_t,                     setlayout,      {.v = &layouts[0]} }, // tiling
+	{ MODKEY,                       XK_m,                     setlayout,      {.v = &layouts[2]} }, // monocle
 
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // decrease master size
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, // increase master size
+	{ MODKEY,                       XK_h,                     setmfact,       {.f = -0.05} }, // decrease master size
+	{ MODKEY,                       XK_l,                     setmfact,       {.f = +0.05} }, // increase master size
 
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, // focus down
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, // focus up
+	{ MODKEY,                       XK_j,                     focusstack,     {.i = +1 } }, // focus down
+	{ MODKEY,                       XK_k,                     focusstack,     {.i = -1 } }, // focus up
 
-	{ MODKEY,                       XK_b,      togglebar,      {0} }, // show bar
+	{ MODKEY,                       XK_b,                     togglebar,      {0} }, // show bar
 
-	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } }, // more master nodes
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } }, // less measter nodes
+	{ MODKEY,                       XK_o,                     incnmaster,     {.i = +1 } }, // more master nodes
+	{ MODKEY,                       XK_p,                     incnmaster,     {.i = -1 } }, // less measter nodes
 
-	{ MODKEY,                       XK_z,      zoom,           {0} }, // zoom on selected window
+	{ MODKEY,                       XK_z,                     zoom,           {0} }, // zoom on selected window
 
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // focus monitor left
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } }, // focus monitor right
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, // tag monitor left
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, // tag monitor right
+	{ MODKEY,                       XK_comma,                 focusmon,       {.i = -1 } }, // focus monitor left
+	{ MODKEY,                       XK_period,                focusmon,       {.i = +1 } }, // focus monitor right
+	{ MODKEY|ShiftMask,             XK_comma,                 tagmon,         {.i = -1 } }, // tag monitor left
+	{ MODKEY|ShiftMask,             XK_period,                tagmon,         {.i = +1 } }, // tag monitor right
 
-	{ MODKEY,                       XK_Tab,    view,           {0} }, // view last tag
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, // view all tags
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY,                       XK_Tab,                   view,           {0} },         // view last tag
+	{ MODKEY,                       XK_0,                     view,           {.ui = ~0 } }, // view all tags
+	{ MODKEY|ShiftMask,             XK_0,                     tag,            {.ui = ~0 } }, // tag applications
+	TAGKEYS(                        XK_1,                                     0)
+	TAGKEYS(                        XK_2,                                     1)
+	TAGKEYS(                        XK_3,                                     2)
+	TAGKEYS(                        XK_4,                                     3)
+	TAGKEYS(                        XK_5,                                     4)
+	TAGKEYS(                        XK_6,                                     5)
+	TAGKEYS(                        XK_7,                                     6)
+	TAGKEYS(                        XK_8,                                     7)
+	TAGKEYS(                        XK_9,                                     8)
 };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-//	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-//	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-//	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-//	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} }, // move window
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} }, // resize window
+	{ ClkTagBar,            0,              Button1,        view,           {0} }, // view tag
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} }, // toggle multiple tags
 };
-
