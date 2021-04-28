@@ -115,6 +115,7 @@ static Key keys[] = {
 	// window layout and control
 	{ MODKEY|ShiftMask,             XK_space,                 togglefloating, {0} },                // toggle float
 	{ MODKEY,                       XK_t,                     setlayout,      {.v = &layouts[0]} }, // tiling
+	{ MODKEY,                       XK_f,                     setlayout,      {.v = &layouts[1]} }, // float
 	{ MODKEY,                       XK_m,                     setlayout,      {.v = &layouts[2]} }, // monocle
 
 	{ MODKEY,                       XK_h,                     setmfact,       {.f = -0.05} }, // decrease master size
