@@ -80,7 +80,8 @@ static const char *pavu[]      = { "pavucontrol", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *spotify[]   = { "spotify", NULL };
 static const char *files[]     = { "thunar", NULL };
-static const char *emacs[]     = { "emacs", NULL};
+static const char *emacs[]     = { "emacs", NULL };
+static const char *pdf[]       = { "zathura", NULL };
 
 static const char *vol_up[]    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
 static const char *vol_down[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
@@ -104,6 +105,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_d,                     spawn,          {.v = discord } },
 	{ MODKEY|ControlMask,           XK_p,                     spawn,          {.v = pavu } },
 	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = spotify } },
+	{ MODKEY|ControlMask,           XK_z,                     spawn,          {.v = pdf } },
 	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = flameshot } },
 
 	// laptop audio control
