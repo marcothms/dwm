@@ -80,6 +80,7 @@ static const char *pavu[]      = { "pavucontrol", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *spotify[]   = { "spotify", NULL };
 static const char *files[]     = { "thunar", NULL };
+static const char *emacs[]     = { "emacs", NULL};
 
 static const char *vol_up[]    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
 static const char *vol_down[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
@@ -98,6 +99,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,                     spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,                spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_e,                     spawn,          {.v = files } },
+	{ MODKEY|ControlMask,           XK_e,                     spawn,          {.v = emacs } },
 	{ MODKEY|ControlMask,           XK_f,                     spawn,          {.v = browser } },
 	{ MODKEY|ControlMask,           XK_d,                     spawn,          {.v = discord } },
 	{ MODKEY|ControlMask,           XK_p,                     spawn,          {.v = pavu } },
