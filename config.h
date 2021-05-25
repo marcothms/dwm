@@ -18,16 +18,19 @@ static const unsigned int gappoh    = 10;       /* horiz outer gap between windo
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 
-static const char fg[]              = "#ffffff";
-static const char nord_fg[]         = "#D8DEE9";
-static const char one_bg[]          = "#1C1B1D";
-static const char nord_bg[]         = "#2E3440";
-static const char nord_blue[]       = "#81A1C1";
+static const char fg[]         = "#282828";
+static const char bg[]         = "#f2e5bc";
+static const char acc[]        = "#d79921";
 
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { nord_fg,   nord_bg,   nord_bg   },
-	[SchemeSel]  = { nord_bg,   nord_blue, nord_blue },
+	/*                   fg  bg   border */
+	[SchemeNorm]     = { fg, bg,  bg  },
+	[SchemeSel]      = { bg, acc, acc },
+	[SchemeStatus]   = { fg, bg,  "#000000"  }, // Statusbar right
+	[SchemeTagsSel]  = { fg, acc, "#000000"  }, // Tagbar left selected
+        [SchemeTagsNorm] = { fg, bg,  "#000000"  }, // Tagbar left unselected
+        [SchemeInfoSel]  = { fg, bg,  "#000000"  }, // infobar middle  selected
+        [SchemeInfoNorm] = { fg, bg,  "#000000"  }, // infobar middle  unselected
 };
 
 /* tagging */
