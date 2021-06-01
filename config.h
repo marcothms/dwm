@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
-static const char *fonts[]          = { "Product Sans:size=10", "Stick:size=11", "Material Design Icons:size=10" };
+static const char *fonts[]          = { "Product Sans:size=10", "Noto Sans CJK JP:size=9", "Material Design Icons:size=10" };
 
 static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
@@ -27,9 +27,9 @@ static const char *colors[][3]      = {
 	[SchemeSel]      = { bg, acc, acc },
 	[SchemeStatus]   = { fg, bg,  "#000000"  }, // Statusbar right
 	[SchemeTagsSel]  = { fg, acc, "#000000"  }, // Tagbar left selected
-        [SchemeTagsNorm] = { fg, bg,  "#000000"  }, // Tagbar left unselected
-        [SchemeInfoSel]  = { fg, bg,  "#000000"  }, // infobar middle  selected
-        [SchemeInfoNorm] = { fg, bg,  "#000000"  }, // infobar middle  unselected
+	[SchemeTagsNorm] = { fg, bg,  "#000000"  }, // Tagbar left unselected
+	[SchemeInfoSel]  = { fg, bg,  "#000000"  }, // infobar middle  selected
+	[SchemeInfoNorm] = { fg, bg,  "#000000"  }, // infobar middle  unselected
 };
 
 /* tagging */
@@ -50,7 +50,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
