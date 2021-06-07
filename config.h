@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
-static const char *fonts[]          = { "Product Sans:size=10", "Noto Sans CJK JP:size=9", "Material Design Icons:size=10" };
+static const char *fonts[]          = { "Product Sans:size=15", "Noto Sans CJK JP:size=13", "Material Design Icons:size=15" };
 
 static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
