@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance     title           tags mask   isfloating  isterminal  noswallow  monitor */
-	{ "Nightly",  NULL,       NULL,           1 << 2,       0,        0,          0,         -1 },
+	{ "Firefox",  NULL,       NULL,           1 << 2,       0,        0,          0,         -1 },
 	{ "Alacritty",NULL,       NULL,           0,            0,        1,          0,         -1 },
 	{ "discord",  NULL,       NULL,           1 << 3,       0,        0,          0,         -1 },
 	{ NULL,       NULL,       "Event Tester", 0,            0,        0,          1,         -1 }, /* xev */
@@ -72,8 +72,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *browser[]   = { "firefox-nightly", NULL };
-static const char *discord[]   = { "discord", NULL };
+static const char *browser[]   = { "firefox", NULL };
+static const char *discord[]   = { "Discord", NULL };
 static const char *dmenucmd[]  = { "dmenu_run", NULL };
 static const char *emacs_d[]   = { "emacsclient", "-c", NULL };
 static const char *files[]     = { "thunar", NULL };
@@ -88,6 +88,9 @@ static const char *termcmd[]   = { "alacritty", NULL };
 static const char *vol_up[]    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
 static const char *vol_down[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%", NULL };
 static const char *vol_mute[]  = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+
+static const char *bright_up[] = { "light", "-A", "5", NULL};
+static const char *bright_dn[] = { "light", "-U", "5", NULL};
 
 static const char *play_tggl[] = { "playerctl", "play-pause", NULL };
 static const char *play_next[] = { "playerctl", "next", NULL };
@@ -118,6 +121,10 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioPlay,         spawn,          {.v = play_tggl } },
 	{ 0,                            XF86XK_AudioNext,         spawn,          {.v = play_next } },
 	{ 0,                            XF86XK_AudioPrev,         spawn,          {.v = play_prev } },
+
+	// laptop display brightness
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = bright_up } },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = bright_dn } },
 
 	// window layout and control
 	{ MODKEY|ShiftMask,             XK_space,                 togglefloating, {0} },                // toggle float
