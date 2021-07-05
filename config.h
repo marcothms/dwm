@@ -77,7 +77,7 @@ static const char *discord[]   = { "Discord", NULL };
 static const char *dmenucmd[]  = { "dmenu_run", NULL };
 static const char *emacs_d[]   = { "emacsclient", "-c", NULL };
 static const char *files[]     = { "thunar", NULL };
-static const char *flameshot[] = { "flameshot", "gui", NULL };
+static const char *screensht[] = { "gnome-screenshot", "-i", NULL };
 static const char *lock[]      = { "slock", NULL };
 static const char *pavu[]      = { "pavucontrol", NULL };
 static const char *pdf[]       = { "zathura", NULL };
@@ -112,7 +112,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = spotify } },
 	{ MODKEY|ControlMask,           XK_t,                     spawn,          {.v = telegram } },
 	{ MODKEY|ControlMask,           XK_z,                     spawn,          {.v = pdf } },
-	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = flameshot } },
+	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = screensht} },
 
 	// laptop audio control
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = vol_up } },
