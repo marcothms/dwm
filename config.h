@@ -72,17 +72,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *browser[]   = { "firefox", NULL };
-static const char *discord[]   = { "Discord", NULL };
 static const char *dmenucmd[]  = { "dmenu_run", NULL };
 static const char *emacs_d[]   = { "emacsclient", "-c", NULL };
-static const char *files[]     = { "thunar", NULL };
-static const char *screensht[] = { "gnome-screenshot", "-i", NULL };
+static const char *screensht[] = { "flameshot", "gui", NULL };
 static const char *lock[]      = { "slock", NULL };
-static const char *pavu[]      = { "pavucontrol", NULL };
-static const char *pdf[]       = { "zathura", NULL };
-static const char *spotify[]   = { "spotify", NULL };
-static const char *telegram[]  = { "telegram-desktop", NULL};
 static const char *termcmd[]   = { "alacritty", NULL };
 
 static const char *vol_up[]    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%", NULL };
@@ -104,14 +97,7 @@ static Key keys[] = {
 	// open programs
 	{ MODKEY,                       XK_d,                     spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,                spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_e,                     spawn,          {.v = files } },
-	{ MODKEY|ControlMask,           XK_d,                     spawn,          {.v = discord } },
 	{ MODKEY|ControlMask,           XK_e,                     spawn,          {.v = emacs_d } },
-	{ MODKEY|ControlMask,           XK_f,                     spawn,          {.v = browser } },
-	{ MODKEY|ControlMask,           XK_p,                     spawn,          {.v = pavu } },
-	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = spotify } },
-	{ MODKEY|ControlMask,           XK_t,                     spawn,          {.v = telegram } },
-	{ MODKEY|ControlMask,           XK_z,                     spawn,          {.v = pdf } },
 	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = screensht} },
 
 	// laptop audio control
